@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  jwtex:
+    image: jwtex-app
+    environment:
+      - REDIS_DSN=datastore:6379
+    expose:
+      - "8889"
+    ports:
+      - "8889:8889"
+    depends_on:
+      - datastore
+
+  datastore:
+    image: redis
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
